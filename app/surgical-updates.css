@@ -7,7 +7,7 @@
 .weekly-intro .section-label{border-color:#ffffff38;color:#c3cdef}
 .weekly-intro .section-heading h2 em{color:#a0b4ed}
 .weekly-intro .section-heading>p{color:#c3cdef}
-.weekly-schedule-body{padding:0 6% 100px;background:#fff}
+.weekly-schedule-body{padding:32px 6% 100px;background:#fff}
 .weekly-section .weekly-caption,
 .weekly-section .weekly-day{border-color:#dce0e9}
 .weekly-section .weekly-day:nth-child(odd){background:#fff}
@@ -28,4 +28,4 @@
 
 @media(min-width:1600px){.weekly-intro,.weekly-schedule-body{padding-left:max(6%,calc((100vw - 1440px)/2));padding-right:max(6%,calc((100vw - 1440px)/2))}}
 @media(max-width:1000px){.photo-placeholder.clinic-front-photo{height:400px}.weekly-intro{padding-top:80px}.weekly-schedule-body{padding-bottom:80px}}
-@media(max-width:700px){.photo-placeholder.clinic-front-photo{height:280px}.clinic-front-photo img{object-position:center 40%}.team-more{width:100%;max-width:240px}.weekly-intro{padding-top:60px}.weekly-schedule-body{padding-bottom:60px}}
+@media(max-width:700px){.photo-placeholder.clinic-front-photo{height:280px}.clinic-front-photo img{object-position:center 40%}.team-more{width:100%;max-width:240px}.weekly-intro{padding-top:60px}.weekly-schedule-body{padding-top:24px;padding-bottom:60px}}
