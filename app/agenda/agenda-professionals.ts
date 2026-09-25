@@ -41,13 +41,13 @@ export const agendaProfessionals: Professional[] = [
   {
     "id": "eloisa-mello",
     "name": "Dra. Eloisa Mello",
-    "area": "Psicologa clinica e Neuro psicologa",
+    "area": "Psicologa Clinica e Neuro Psicologa",
     "photo": "/profissionais/agenda/eloisa-mello.webp"
   },
   {
     "id": "carolline-carvalho",
     "name": "Dra. Carolline Carvalho",
-    "area": "psicologa infantil",
+    "area": "Psicologa Infantil",
     "photo": "/profissionais/agenda/carolline-carvalho.webp"
   },
   {
@@ -59,7 +59,7 @@ export const agendaProfessionals: Professional[] = [
   {
     "id": "flora-carolina",
     "name": "Dra. Flora Carolina",
-    "area": "Terapeuta oculpacional",
+    "area": "Terapeuta Oculpacional",
     "photo": "/profissionais/agenda/flora-carolina.webp"
   },
   {
@@ -89,7 +89,7 @@ export const agendaProfessionals: Professional[] = [
   {
     "id": "louise-torres",
     "name": "Dra. Louise Torres",
-    "area": "Gastroenterologista e Endoscopia digestiva alta",
+    "area": "Gastroenterologista e Endoscopia Digestiva Alta",
     "photo": "/profissionais/agenda/louise-torres.webp"
   },
   {
@@ -119,7 +119,7 @@ export const agendaProfessionals: Professional[] = [
   {
     "id": "joceane-ramos",
     "name": "Joceane Ramos",
-    "area": "Procedimentos esteticos",
+    "area": "Procedimentos Esteticos",
     "photo": "/profissionais/agenda/joceane-ramos.webp"
   },
   {
