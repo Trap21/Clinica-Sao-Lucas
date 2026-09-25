@@ -15,7 +15,7 @@ export function WeeklySchedule({ professionals, schedule = weeklySchedule }: { p
   });
   return <section className="services section weekly-section" id="atendimentos" aria-labelledby="weekly-title">
     <div className="weekly-intro"><div className="section-label"><span>02 / ATENDIMENTOS</span><span>CUIDADO EM DIFERENTES DIMENSÕES</span></div>
-    <div className="section-heading"><h2 id="weekly-title">Sua saúde.<br/><em>Nosso ponto de encontro.</em></h2><p>Encontre os profissionais de cada dia. Converse com a equipe para confirmar a disponibilidade e agendar seu atendimento.</p></div></div>
+    <div className="section-heading"><h2 id="weekly-title">Sua saúde.<br/><em>Nosso ponto de encontro.</em></h2></div></div>
     <div className="weekly-schedule-body">
     <div className="weekly-caption"><div><span className="eyebrow">AGENDA SEMANAL</span>{days.length > 0 && <h3>{days[0].label} <span>—</span> {days[6].label}<small>{schedule.weekStart.slice(0, 4)}</small></h3>}</div><p>{schedule.status === 'reference' ? 'Semana de referência · a confirmar' : 'Programação da semana'}</p></div>
     <div className="weekly-days">{days.map(day => {
