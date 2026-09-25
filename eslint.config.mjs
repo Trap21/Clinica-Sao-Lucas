@@ -23,6 +23,14 @@ const eslintConfig = defineConfig([
       "react-hooks/set-state-in-effect": "off",
     },
   },
+  {
+    files: ["app/**/*.{ts,tsx}"],
+    rules: {
+      // This public site is built by Vite, so Next's Image component is not
+      // available. The local images are optimized ahead of time instead.
+      "@next/next/no-img-element": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;

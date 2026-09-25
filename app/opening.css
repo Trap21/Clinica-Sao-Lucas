@@ -2,8 +2,8 @@
 header.site-header{height:98px;background:#f3f5fa;border-bottom:0}
 .site-header .brand-clean{gap:10px;color:var(--navy)}
 .site-header .brand-clean svg{width:44px;height:61px;flex-shrink:0}
-.site-header .brand-clean small{font-size:10px;letter-spacing:.33em;margin-bottom:2px}
-.site-header .brand-clean strong{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:25px;letter-spacing:-.045em}
+.site-header .brand-clean small{font-size:10px;letter-spacing:.33em;margin-bottom:2px;color:#b67539}
+.site-header .brand-clean strong{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:25px;letter-spacing:-.045em;color:#17285f}
 .hero{isolation:isolate}
 .hero .hero-top{position:relative;z-index:3}
 .hero .hero-content{position:relative;grid-template-columns:1fr 1fr;gap:0;min-height:610px}
