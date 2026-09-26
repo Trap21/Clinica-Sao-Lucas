@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState } from 'react';
 import { getWeekDays, weeklySchedule, type Professional, type Schedule } from './schedule';
 import { assetUrl } from '../asset-url';
@@ -6,7 +8,7 @@ import './weekly.css';
 
 export function WeeklySchedule({ professionals, schedule = weeklySchedule }: { professionals: Professional[]; schedule?: Schedule }) {
   const days = getWeekDays(schedule, professionals);
-  const [expandedDays, setExpandedDays] = useState<Set<string>>(() => new Set());
+  const [expandedDays, setExpandedDays] = useState<Record<string, boolean>>({});
   const meetingPhrase = useRef<HTMLElement>(null);
   useEffect(() => {
     const phrase = meetingPhrase.current;
@@ -41,19 +43,17 @@ export function WeeklySchedule({ professionals, schedule = weeklySchedule }: { p
       if (frame) cancelAnimationFrame(frame);
     };
   }, []);
-  const toggleDay = (iso: string) => setExpandedDays(current => {
-    const next = new Set(current);
-    if (next.has(iso)) next.delete(iso);
-    else next.add(iso);
-    return next;
-  });
+  const toggleDay = (iso: string) => setExpandedDays(current => ({
+    ...current,
+    [iso]: !current[iso],
+  }));
   return <section className="services section weekly-section" id="atendimentos" aria-labelledby="weekly-title">
-    <div className="weekly-intro"><div className="section-label"><span>02 / ATENDIMENTOS</span><span>CUIDADO EM DIFERENTES DIMENSÕES</span></div>
+    <div className="weekly-intro"><div className="section-label"><span>02 / ATENDIMENTOS</span></div>
     <div className="section-heading"><h2 id="weekly-title">Sua saúde.<br/><em ref={meetingPhrase} className="weekly-meeting-phrase">Nosso ponto de encontro.</em></h2></div></div>
     <div className="weekly-schedule-body">
     <div className="weekly-caption"><div><span className="eyebrow">AGENDA SEMANAL</span>{days.length > 0 && <h3>{days[0].label} <span>—</span> {days[6].label}<small>{schedule.weekStart.slice(0, 4)}</small></h3>}</div><p>{schedule.status === 'reference' ? 'Semana de referência · a confirmar' : 'Programação da semana'}</p></div>
     <div className="weekly-days">{days.map(day => {
-      const isExpanded = expandedDays.has(day.iso);
+      const isExpanded = Boolean(expandedDays[day.iso]);
       const visiblePeople = isExpanded ? day.people : day.people.slice(0, 2);
       const canExpand = day.people.length > 2;
       const remainingCount = day.people.length - 2;
@@ -65,6 +65,6 @@ export function WeeklySchedule({ professionals, schedule = weeklySchedule }: { p
       </article>;
     })}</div>
     {!days.length && <p>Agenda em atualização. Consulte a equipe para confirmar os atendimentos.</p>}
-    <div className="weekly-footer"><p>{schedule.status === 'reference' ? 'Profissionais conforme o material enviado pela clínica. Datas e disponibilidade sujeitas à confirmação.' : 'Confirme a disponibilidade com a equipe antes de sua visita.'}</p><a className="text-link" href="#contato">Consultar a equipe <span><Icon name="arrow-up-right"/></span></a></div></div>
+    <div className="weekly-footer"><a className="text-link" href="#contato">Consultar a equipe <span><Icon name="arrow-up-right"/></span></a></div></div>
   </section>;
 }
