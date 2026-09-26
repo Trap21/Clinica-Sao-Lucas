@@ -53,3 +53,26 @@ header.site-header{height:104px;background:#f4f6fb;border-bottom:1px solid rgba(
   .site-header .nav-contact{min-width:0;margin:12px 0 0;padding:9px 48px 9px 16px}
   .hero-story .hero-bottom{left:0;right:0;padding:0 6%}
 }
+
+/* No celular, o Hero usa um fluxo próprio para não depender da altura dinâmica do navegador. */
+@media(max-width:700px){
+  .hero-story{height:auto;min-height:0;overflow:hidden!important;--hero-copy-opacity:1;--hero-copy-x:0px;--hero-meta-opacity:1}
+  .hero-story .hero-stage{position:relative;top:auto;height:auto;min-height:0;overflow:hidden}
+  .hero-story .hero-content{position:relative;inset:auto;display:flex;flex-direction:column;min-height:0}
+  .hero-story .clinic-feature{position:relative;inset:auto;order:1;width:100%;height:auto;aspect-ratio:4/3;margin:0;clip-path:none!important;border-radius:0 0 28px 0}
+  .hero-story .clinic-feature-image{width:100%;height:100%}
+  .hero-story .clinic-feature-image img{width:100%;height:100%;object-fit:cover;object-position:center center;transform-origin:center center}
+  .hero-story .clinic-feature-image::before{background:linear-gradient(180deg,rgba(9,22,66,.11),transparent 56%,rgba(9,22,66,.14))}
+  .hero-story .hero-copy{position:relative;inset:auto;order:2;width:100%;max-width:none;padding:40px 6% 48px;opacity:1!important;transform:none!important;background:#f1f3f8;will-change:auto}
+  .hero-story .hero-copy::before{width:34px;margin-bottom:20px}
+  .hero-story .hero-copy h1{font-size:clamp(42px,12.3vw,54px);line-height:1.02;letter-spacing:-.067em}
+  .hero-story .hero-copy p{max-width:360px;margin:20px 0 24px;font-size:15px;line-height:1.58}
+  .hero-story .hero-copy .button{width:100%;max-width:none;min-height:56px;padding:16px 18px;font-size:13px}
+  .hero-story .hero-bottom{position:relative;inset:auto;height:66px;padding:0 6%;opacity:1!important}
+}
+
+@media(max-width:380px){
+  .hero-story .hero-copy{padding-top:34px;padding-bottom:42px}
+  .hero-story .hero-copy h1{font-size:40px}
+  .hero-story .hero-copy p{font-size:14px}
+}
