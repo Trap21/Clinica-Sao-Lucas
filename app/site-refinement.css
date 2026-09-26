@@ -1,0 +1,148 @@
+/*
+ * Refinamento editorial do restante da página.
+ * O Hero permanece como aprovado; este arquivo apenas cria continuidade visual.
+ */
+
+body{overflow-x:clip;background:#f6f7fa}
+.section:not(.laboratory):not(.weekly-section){position:relative}
+.section-label{position:relative;align-items:center;min-height:32px;padding-bottom:17px;font-weight:600;letter-spacing:.15em}
+.section-label::before{content:"";position:absolute;bottom:-1px;left:0;width:42px;height:2px;background:var(--orange);transform-origin:left}
+
+/* 01 — A clínica: composição calma, humana e assimétrica. */
+.about{padding-top:128px;padding-bottom:136px;background:#f7f8fb;overflow:hidden}
+.about::before{content:"01";position:absolute;top:70px;right:4%;font-family:'Manrope',sans-serif;font-size:clamp(120px,18vw,280px);font-weight:300;line-height:1;color:#edf0f6;letter-spacing:-.09em;pointer-events:none}
+.about .section-label{position:relative;z-index:2}
+.about-grid{position:relative;z-index:1;grid-template-columns:minmax(0,1.12fr) minmax(330px,.72fr);gap:clamp(58px,9vw,150px);padding-top:86px}
+.about-grid::after{content:"";position:absolute;top:86px;bottom:0;left:calc(56% + 1px);width:1px;background:linear-gradient(180deg,var(--orange) 0 46px,var(--line) 46px 100%);opacity:.8}
+.photo-placeholder.clinic-front-photo{height:clamp(430px,44vw,650px);padding:0;border-radius:0 76px 0 0;background:#dce4f1;box-shadow:0 35px 90px rgba(17,34,84,.12);clip-path:inset(0 100% 0 0);transition:clip-path 1.15s cubic-bezier(.22,1,.36,1)}
+.about-grid.is-visible .clinic-front-photo{clip-path:inset(0)}
+.clinic-front-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(11,27,75,.2));pointer-events:none}
+.clinic-front-photo img{filter:saturate(.88) contrast(1.05);transition:filter .5s ease}
+.about-copy{max-width:520px;opacity:0;transform:translate3d(34px,0,0);transition:opacity .75s ease .2s,transform 1s cubic-bezier(.22,1,.36,1) .2s}
+.about-grid.is-visible .about-copy{opacity:1;transform:none}
+.about-copy::before{content:"CUIDADO QUE COMEÇA PELA ESCUTA";display:block;margin-bottom:25px;color:#b76826;font-size:9px;font-weight:700;letter-spacing:.18em}
+.about-copy h2{font-size:clamp(45px,5vw,72px)}
+.about-copy>p{max-width:430px;margin-top:32px;font-size:16px;line-height:1.78}
+.about-copy .text-link{margin-top:35px}
+
+/* 02 — Agenda: bloco de entrada marcante e conteúdo funcional preservado. */
+.services.weekly-section{position:relative;overflow:hidden}
+.weekly-intro{position:relative;min-height:480px;padding-top:110px;padding-bottom:88px;overflow:hidden;background:#1735a3}
+.weekly-intro::before,.weekly-intro::after{content:"";position:absolute;border:1px solid rgba(255,255,255,.12);border-radius:50%;pointer-events:none}
+.weekly-intro::before{width:470px;height:470px;right:-80px;top:-170px}
+.weekly-intro::after{width:310px;height:310px;right:0;top:-90px;border-color:rgba(240,155,72,.28)}
+.weekly-intro .section-label,.weekly-intro .section-heading{position:relative;z-index:1}
+.weekly-intro .section-heading{margin:72px 0 0}
+.weekly-intro .section-heading::after{content:"";position:absolute;right:2%;bottom:7px;width:clamp(130px,20vw,290px);height:1px;background:linear-gradient(90deg,rgba(255,255,255,.08),rgba(255,255,255,.5))}
+.weekly-intro .section-heading h2{max-width:960px;font-size:clamp(56px,6.35vw,96px);line-height:1.03}
+.weekly-schedule-body{padding-top:68px;padding-bottom:120px;background:#fff}
+.weekly-caption{opacity:0;transform:translate3d(0,22px,0);transition:opacity .7s ease,transform .85s cubic-bezier(.22,1,.36,1)}
+.weekly-caption.is-visible{opacity:1;transform:none}
+.weekly-caption .eyebrow{display:flex;align-items:center;gap:12px;font-weight:700}
+.weekly-caption .eyebrow::before{content:"";width:28px;height:2px;background:var(--orange)}
+.weekly-caption h3{font-size:clamp(30px,3vw,44px)}
+.weekly-day{position:relative;padding-top:38px;padding-bottom:38px;opacity:0;transform:translate3d(0,28px,0);transition:opacity .65s ease,transform .85s cubic-bezier(.22,1,.36,1),background-color .35s ease}
+.weekly-day.is-visible{opacity:1;transform:none}
+.weekly-day::before{content:"";position:absolute;top:-1px;left:0;width:0;height:1px;background:var(--orange);transition:width .65s cubic-bezier(.22,1,.36,1)}
+.weekly-day:hover::before{width:88px}
+.weekly-section .weekly-day:nth-child(even){background:#f5f7fb}
+.weekly-section .weekly-day:hover{background:#eef2f9}
+.weekly-date h3{font-weight:700;letter-spacing:.13em}
+.weekly-date time{font-family:'Manrope',sans-serif;font-weight:350}
+.weekly-footer{padding-top:38px}
+
+/* 03 — Laboratório: mantém a peça criada e melhora a passagem de seção. */
+.laboratory{padding-top:112px;padding-bottom:100px;border-top:8px solid #f09b48}
+.laboratory::after{content:"";position:absolute;z-index:0;left:-12%;bottom:-24%;width:520px;height:520px;border:1px solid rgba(255,255,255,.08);border-radius:50%;pointer-events:none}
+.laboratory>.section-label,.laboratory-hero,.laboratory-tests-toggle,.laboratory-tests-reveal{position:relative;z-index:1}
+
+/* Manifesto: segundo momento de impacto, mais curto que o Hero. */
+.manifesto{min-height:720px;display:flex;flex-direction:column;justify-content:center;padding:125px 10%;background:#1735a3;isolation:isolate}
+.manifesto::before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(105deg,rgba(7,25,88,.28),transparent 52%)}
+.manifesto::after{content:"S";position:absolute;z-index:-1;right:-.08em;bottom:-.34em;font-family:Georgia,'Times New Roman',serif;font-size:min(68vw,780px);line-height:1;color:rgba(255,255,255,.025);pointer-events:none}
+.manifesto>.eyebrow{display:flex;align-items:center;gap:16px}
+.manifesto>.eyebrow::before{content:"";width:36px;height:2px;background:var(--orange)}
+.manifesto h2{max-width:1100px;margin:55px 0 65px;font-size:clamp(55px,7vw,104px);line-height:.99}
+.manifesto-star{right:4%;top:50%;color:rgba(112,143,232,.15);transform:translateY(-50%) rotate(8deg)}
+
+/* 04 — Equipe: mais espaço editorial sem alterar cards ou biografias. */
+.team{padding-top:132px;padding-bottom:136px;background:#f7f8fb;overflow:hidden}
+.team::before{content:"";position:absolute;top:0;right:6%;width:1px;height:105px;background:var(--orange)}
+.team-intro{position:relative;padding-top:86px;padding-bottom:22px}
+.team-intro::before{content:"";position:absolute;top:38px;left:50%;width:1px;height:74px;background:var(--line)}
+.team-title{font-size:clamp(48px,5.2vw,76px)}
+.professionals-grid{position:relative;margin-top:76px;padding-top:30px;border-top:1px solid var(--line);opacity:0;transform:translate3d(0,34px,0);transition:opacity .8s ease,transform 1s cubic-bezier(.22,1,.36,1)}
+.professionals-grid.is-visible{opacity:1;transform:none}
+.professional-photo{box-shadow:0 12px 32px rgba(25,44,98,.06)}
+.professional figcaption{border-color:#cfd6e4}
+
+/* 05 — Contato: fechamento claro e memorável. */
+.contact{padding-top:120px;padding-bottom:124px;background:#e8edf7;overflow:hidden}
+.contact::before{content:"05";position:absolute;right:3%;bottom:-.25em;font-family:'Manrope',sans-serif;font-size:clamp(190px,27vw,410px);font-weight:300;line-height:1;color:rgba(23,53,163,.045);letter-spacing:-.09em;pointer-events:none}
+.contact .section-label,.contact-grid{position:relative;z-index:1}
+.contact-grid{grid-template-columns:minmax(0,1.15fr) minmax(330px,.7fr);gap:clamp(70px,12vw,190px);padding-top:82px;opacity:0;transform:translate3d(0,30px,0);transition:opacity .8s ease,transform 1s cubic-bezier(.22,1,.36,1)}
+.contact-grid.is-visible{opacity:1;transform:none}
+.contact-grid h2{font-size:clamp(48px,5.5vw,80px)}
+.contact-grid>div>p{max-width:520px;margin:32px 0;font-size:16px;line-height:1.75}
+.contact-pending{max-width:460px;padding:22px 0;border-top-color:#9aa8c6;border-bottom:1px solid #c1cada;transition:padding-left .35s cubic-bezier(.22,1,.36,1),color .25s ease}
+.contact-pending:hover{padding-left:12px;color:#a65e22}
+.contact-info>div{padding-bottom:29px;margin-bottom:29px}
+
+footer{position:relative;opacity:0;transform:translate3d(0,20px,0);transition:opacity .65s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+footer.is-visible{opacity:1;transform:none}
+
+@media(max-width:1000px){
+  .about{padding-top:104px;padding-bottom:110px}
+  .about-grid{grid-template-columns:1fr 1fr;gap:8%;padding-top:70px}
+  .about-grid::after{left:50%}
+  .weekly-intro{min-height:420px;padding-top:90px;padding-bottom:72px}
+  .weekly-schedule-body{padding-top:58px;padding-bottom:100px}
+  .manifesto{min-height:620px}
+  .contact-grid{gap:8%}
+}
+
+@media(max-width:700px){
+  .section-label{min-height:28px;padding-bottom:14px;letter-spacing:.11em}
+  .section-label::before{width:30px}
+  .about{padding-top:76px;padding-bottom:84px}
+  .about::before{top:80px;right:-8%;font-size:150px}
+  .about-grid{grid-template-columns:1fr;gap:44px;padding-top:46px}
+  .about-grid::after{display:none}
+  .photo-placeholder.clinic-front-photo{height:310px;border-radius:0 42px 0 0}
+  .about-copy{padding-left:12px}
+  .about-copy::before{margin-bottom:18px;font-size:8px}
+  .about-copy h2{font-size:44px}
+  .about-copy>p{font-size:15px;line-height:1.72}
+
+  .weekly-intro{min-height:365px;padding-top:68px;padding-bottom:62px}
+  .weekly-intro::before{width:300px;height:300px;right:-130px;top:-90px}
+  .weekly-intro::after{width:190px;height:190px;right:-35px;top:-35px}
+  .weekly-intro .section-heading{margin-top:55px}
+  .weekly-intro .section-heading::after{display:none}
+  .weekly-intro .section-heading h2{font-size:46px;line-height:1.05}
+  .weekly-schedule-body{padding-top:46px;padding-bottom:78px}
+  .weekly-caption h3{font-size:29px}
+  .weekly-day{padding-top:30px;padding-bottom:30px}
+  .weekly-day:hover::before{width:54px}
+
+  .laboratory{padding-top:76px;padding-bottom:72px;border-top-width:6px}
+  .manifesto{min-height:570px;padding-top:86px;padding-bottom:86px}
+  .manifesto h2{margin:42px 0 50px;font-size:49px;line-height:1.02}
+  .manifesto-star{right:-14%;font-size:290px}
+
+  .team{padding-top:82px;padding-bottom:88px}
+  .team::before{right:8%;height:58px}
+  .team-intro{padding-top:54px;padding-bottom:10px}
+  .team-intro::before{display:none}
+  .team-title{font-size:44px}
+  .professionals-grid{margin-top:45px;padding-top:22px}
+
+  .contact{padding-top:82px;padding-bottom:88px}
+  .contact::before{right:-11%;bottom:-.12em;font-size:210px}
+  .contact-grid{grid-template-columns:1fr;gap:58px;padding-top:52px}
+  .contact-grid h2{font-size:43px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .photo-placeholder.clinic-front-photo,.about-copy,.weekly-caption,.weekly-day,.professionals-grid,.contact-grid,footer{opacity:1;clip-path:none;transform:none;transition:none}
+}

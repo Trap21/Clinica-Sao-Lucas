@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getWeekDays, weeklySchedule, type Professional, type Schedule } from './schedule';
 import { assetUrl } from '../asset-url';
 import { Icon } from '../Icon';
@@ -7,6 +7,40 @@ import './weekly.css';
 export function WeeklySchedule({ professionals, schedule = weeklySchedule }: { professionals: Professional[]; schedule?: Schedule }) {
   const days = getWeekDays(schedule, professionals);
   const [expandedDays, setExpandedDays] = useState<Set<string>>(() => new Set());
+  const meetingPhrase = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const phrase = meetingPhrase.current;
+    if (!phrase) return;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      if (reducedMotion.matches) {
+        phrase.style.opacity = '1';
+        phrase.style.clipPath = 'none';
+        phrase.style.transform = 'none';
+        phrase.style.willChange = 'auto';
+        return;
+      }
+      const box = phrase.getBoundingClientRect();
+      const progress = Math.min(1, Math.max(0, (window.innerHeight - box.top) / (window.innerHeight * .3)));
+      phrase.style.opacity = String(.08 + .92 * progress);
+      phrase.style.clipPath = `inset(0 0 0 ${(1 - progress) * 100}%)`;
+      phrase.style.transform = `translate3d(${(1 - progress) * 36}px,0,0)`;
+      phrase.style.willChange = 'transform, opacity, clip-path';
+    };
+    const requestUpdate = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    reducedMotion.addEventListener('change', requestUpdate);
+    return () => {
+      window.removeEventListener('scroll', requestUpdate);
+      window.removeEventListener('resize', requestUpdate);
+      reducedMotion.removeEventListener('change', requestUpdate);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
   const toggleDay = (iso: string) => setExpandedDays(current => {
     const next = new Set(current);
     if (next.has(iso)) next.delete(iso);
@@ -15,7 +49,7 @@ export function WeeklySchedule({ professionals, schedule = weeklySchedule }: { p
   });
   return <section className="services section weekly-section" id="atendimentos" aria-labelledby="weekly-title">
     <div className="weekly-intro"><div className="section-label"><span>02 / ATENDIMENTOS</span><span>CUIDADO EM DIFERENTES DIMENSÕES</span></div>
-    <div className="section-heading"><h2 id="weekly-title">Sua saúde.<br/><em>Nosso ponto de encontro.</em></h2></div></div>
+    <div className="section-heading"><h2 id="weekly-title">Sua saúde.<br/><em ref={meetingPhrase} className="weekly-meeting-phrase">Nosso ponto de encontro.</em></h2></div></div>
     <div className="weekly-schedule-body">
     <div className="weekly-caption"><div><span className="eyebrow">AGENDA SEMANAL</span>{days.length > 0 && <h3>{days[0].label} <span>—</span> {days[6].label}<small>{schedule.weekStart.slice(0, 4)}</small></h3>}</div><p>{schedule.status === 'reference' ? 'Semana de referência · a confirmar' : 'Programação da semana'}</p></div>
     <div className="weekly-days">{days.map(day => {

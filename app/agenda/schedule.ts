@@ -1,4 +1,4 @@
-export type Professional = { id: string; name: string; area?: string; photo?: string };
+export type Professional = { id: string; name: string; area?: string; photo?: string; bio?: string };
 export type Schedule = {
   weekStart: string;
   status: 'reference' | 'confirmed';
